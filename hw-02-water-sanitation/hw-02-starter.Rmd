@@ -1,0 +1,71 @@
+---
+title: "HW 02 - Water and Sanitation - Answer Key"
+author: "Gavin McNicol"
+date: "`r Sys.Date()`"
+output: github_document
+---
+
+## Load packages and data
+
+```{r load-packages-data, message = FALSE}
+library(tidyverse)
+wat_san <- read_csv("data/water-and-sanitation.csv")
+```
+
+## Exercises
+
+### Exercise 1
+
+Insert your answer here...then delete this line of text :)
+
+### Exercise 2
+
+Insert your answer here...
+
+### Exercise 3
+
+Insert your answer here...
+
+```{r no-sanitation-years}
+
+```
+
+### Exercise 4
+
+Insert your answer here...
+
+```{r bottom-5-2000}
+
+```
+
+### Exercise 5
+
+Insert your answer here...
+
+```{r all-2000-plot}
+
+```
+
+### Exercise 6
+
+Insert your answer here...
+
+```{r bottom-5-2020}
+
+```
+
+### Exercise 7
+
+Insert your answer here...
+
+```{r progress-summary}
+  
+```
+
+### Exercise 8
+
+Insert your answer here...
+
+```{r country-global-changes}
+
+```

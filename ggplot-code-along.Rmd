@@ -1,0 +1,11 @@
+---
+title: "ggplot-code-along"
+output: html_document
+date: "2024-01-22"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This is a blank .Rmd file.
