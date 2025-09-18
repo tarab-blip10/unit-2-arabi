@@ -44,7 +44,7 @@ ggplot(plastic_waste,
 
 ### Exercise 3
 
-Remove this text, and add your answer for Exercise 3 here.
+**color** and **fill** are aesthetic mappings because they vary by data group (which in this case are the continents), so we map them inside **aes()**. alpha controls how the geometry is drawn, not a data-driven variable here, so it's a fixed parameter of the layer and belongs outside **aes()** inside **geom_density(alpha = ...)**.
 
 ### Exercise 4
 
