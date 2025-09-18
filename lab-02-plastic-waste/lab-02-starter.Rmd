@@ -26,10 +26,12 @@ plastic_waste <- read_csv("data/plastic-waste.csv")
 
 ### Exercise 1
 
-Remove this text, and add your answer for Exercise 1 here.
+These histograms show that across all continents, most countries produce very little plastic waste per captia, (near zero). The main difference is is spread: North America and Europe show slightly higher variation, while Asia, Africa, Oceania, and South America remained tightly group at the low end.
 
 ```{r plastic-waste-continent}
-# insert code here
+ggplot(plastic_waste, aes(x = plastic_waste_per_cap)) +
+  geom_histogram(binwidth = 0.2) +
+  facet_wrap(~ continent, scales = "free_y")
 ```
 
 ### Exercise 2
