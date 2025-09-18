@@ -1,11 +1,18 @@
 ---
 title: "Lab 02 - Plastic waste"
-author: "Insert your name here"
-date: "Insert date here"
+author: "Tasneem Arabi"
+date: "09/18/2025"
 output: github_document
 ---
 
 ## Load packages and data
+
+```{r}
+install.packages("tidyverse")
+library(tidyverse)
+plastic_waste <- readr::read_csv("data/plastic-waste.csv")
+```
+
 
 ```{r load-packages, message=FALSE}
 library(tidyverse) 
