@@ -109,8 +109,22 @@ ggplot(plastic_waste,
 
 ### Exercise 8
 
-Remove this text, and add your answer for Exercise 8 here.
+After filtering out one extreme per capita value, there's a **slight upward trend**: countries that have a larger coastal share tend to have higher per-capita waste, but the relationship is modest and varies by continent.
 
 ```{r recreate-viz}
-# insert code here
+plastic_waste %>%
+  mutate(coastal_pop_prop = coastal_pop / total_pop) %>%
+  filter(plastic_waste_per_cap < 3) %>%
+  ggplot(aes(x = coastal_pop_prop,
+             y = plastic_waste_per_cap,
+             color = continent)) +
+  geom_point() +
+  geom_smooth(color = "black") + 
+  scale_color_viridis_d() +
+  labs(x = "Coastal population proportion (coastal / total population",
+       y = "Plastic waste per capita (kg/day)",
+       color = "continent",
+       title = "Plastic waste vs coastal population proportion",
+       subtitle = "by continent") +
+  theme_minimal()
 ```
