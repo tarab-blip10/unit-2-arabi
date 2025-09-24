@@ -48,10 +48,13 @@ ggplot(plastic_waste,
 
 ### Exercise 4
 
-Remove this text, and add your answer for Exercise 4 here.
+**Violin plots** reveal the full distribution shape (multimodality, skew, tails). **Box plots** emphasize median and quartiles and show outliers explicitly. The box is clearer for median/IQR; the violin is better for seeing bumps and tails.
 
 ```{r plastic-waste-violin}
-# insert code here
+ggplot(data = plastic_waste, 
+       mapping = aes(x = continent, 
+                     y = plastic_waste_per_cap)) +
+  geom_boxplot(width = 0.15, outlier.alpha = 0.4)
 ```
 
 ### Exercise 5
