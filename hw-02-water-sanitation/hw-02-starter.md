@@ -18,7 +18,9 @@ The dataset has r nrow(wat_san) observations (rows).
 
 ### Exercise 2
 
-Insert your answer here…
+Each row represents a country–year record (an Entity in a given Year)
+with the percentages of the population in that country/year at different
+water and sanitation service levels.
 
 ### Exercise 3
 
