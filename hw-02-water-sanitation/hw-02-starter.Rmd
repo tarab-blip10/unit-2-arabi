@@ -67,10 +67,14 @@ wat_san %>%
 
 ### Exercise 6
 
-Insert your answer here...
+Top “no sanitation” countries in 2020. Many countries improve and the very top list changes—some countries drop out, others enter—indicating progress and/or different rates of change.
 
 ```{r bottom-5-2020}
-
+wat_san %>% 
+  filter(Year == 2020, Entity != "World") %>% 
+  arrange(desc(sanitation_none)) %>% 
+  select(Entity, sanitation_none, water_none) %>% 
+  slice_head(n = 10)
 ```
 
 ### Exercise 7
