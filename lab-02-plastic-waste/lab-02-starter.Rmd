@@ -87,14 +87,24 @@ ggplot(plastic_waste,
 
 ### Exercise 7
 
-Remove this text, and add your answer for Exercise 7 here.
+Both relationships look **weak/nonlinear**. Larger populations don't necessarily imply higher per capita waste. If anything, coastal population shows a **slightly stronger**--but still weak--positive trend than total population.
 
 ```{r plastic-waste-population-total}
-# insert code here
+ggplot(plastic_waste,
+       aes(x = total_pop, y = plastic_waste_per_cap)) +
+  geom_point(alpha = 0.7) +
+  scale_x_continuous(labels = scales::label_number(scale_cut = scales::cut_si(""))) +
+  labs(x = "Total population", 
+       y = "Plastic waste per capita (kg/day)")
 ```
 
 ```{r plastic-waste-population-coastal}
-# insert code here
+ggplot(plastic_waste,
+       aes(x = coastal_pop, y = plastic_waste_per_cap)) +
+  geom_point(alpha = 0.7) +
+  scale_x_continuous(labels = scales::label_number(scale_cut = scales::cut_si(""))) +
+  labs(x = "Coastal population", 
+       y = "Plastic waste per capita (kg/day)")
 ```
 
 ### Exercise 8
