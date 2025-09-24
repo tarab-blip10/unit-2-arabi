@@ -59,10 +59,15 @@ ggplot(data = plastic_waste,
 
 ### Exercise 5
 
-Remove this text, and add your answer for Exercise 5 here.
+There is a clear **positive correlation**: countries generating more plastic waste per capita tend to mismanage  more per perosn, with dispersion increasing at higher values.
 
 ```{r plastic-waste-mismanaged}
-# insert code here
+ggplot(plastic_waste,
+       aes(x = plastic_waste_per_cap,
+           y = mismanaged_plastic_waste_per_cap)) +
+  geom_point(alpha = 0.7) +
+  labs(x = "Plastic waste per capita (kg/day)",
+       y = "Mismanaged plastic waste per capita (kg/day)")
 ```
 
 ### Exercise 6
