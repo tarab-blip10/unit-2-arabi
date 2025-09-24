@@ -24,7 +24,25 @@ water and sanitation service levels.
 
 ### Exercise 3
 
-Insert your answer here…
+Between 2000 and 2020, the distribution of no sanitation service shifts
+left (toward lower percentages) and becomes more concentrated at lower
+values—evidence that open defecation generally declined over time,
+though some high-value outliers remain.
+
+``` r
+wat_san %>% 
+  filter(Entity != "World", Year %in% c(2000, 2020)) %>% 
+  ggplot(aes(x = sanitation_none)) +
+  geom_histogram(binwidth = 5, boundary = 0, closed = "left") +
+  facet_wrap(~ Year) +
+  labs(x = "No sanitation (% of population)", y = "Count of countries",
+       title = "Distribution of 'no sanitation' across countries in 2000 vs 2020")
+```
+
+    ## Warning: Removed 31 rows containing non-finite outside the scale range
+    ## (`stat_bin()`).
+
+![](hw-02-starter_files/figure-gfm/no-sanitation-years-1.png)<!-- -->
 
 ### Exercise 4
 
