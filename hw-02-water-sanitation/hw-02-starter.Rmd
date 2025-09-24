@@ -38,10 +38,14 @@ wat_san %>%
 
 ### Exercise 4
 
-Insert your answer here...
+Countries with the highest “no sanitation” in 2000 (descending). Comparing water_none and sanitation_none, lack of sanitation tends to be higher than lack of water, but there’s a clear positive relationship (countries doing poorly on sanitation also tend to do poorly on water).
 
 ```{r bottom-5-2000}
-
+wat_san %>% 
+  filter(Year == 2000, Entity != "World") %>% 
+  arrange(desc(sanitation_none)) %>% 
+  select(Entity, sanitation_none, water_none) %>% 
+  slice_head(n = 10)
 ```
 
 ### Exercise 5

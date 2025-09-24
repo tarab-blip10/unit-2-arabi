@@ -46,7 +46,32 @@ wat_san %>%
 
 ### Exercise 4
 
-Insert your answer here…
+Countries with the highest “no sanitation” in 2000 (descending).
+Comparing water_none and sanitation_none, lack of sanitation tends to be
+higher than lack of water, but there’s a clear positive relationship
+(countries doing poorly on sanitation also tend to do poorly on water).
+
+``` r
+wat_san %>% 
+  filter(Year == 2000, Entity != "World") %>% 
+  arrange(desc(sanitation_none)) %>% 
+  select(Entity, sanitation_none, water_none) %>% 
+  slice_head(n = 10)
+```
+
+    ## # A tibble: 10 × 3
+    ##    Entity                sanitation_none water_none
+    ##    <chr>                           <dbl>      <dbl>
+    ##  1 Cambodia                         86.8      25.7 
+    ##  2 Eritrea                          82.7       3.53
+    ##  3 Niger                            81.8       2.00
+    ##  4 Ethiopia                         77.1      33.0 
+    ##  5 India                            74.1       1.38
+    ##  6 Burkina Faso                     72.6       6.46
+    ##  7 Chad                             71.2       6.80
+    ##  8 Sao Tome and Principe            70.8      10.9 
+    ##  9 Nepal                            69.2       3.40
+    ## 10 Benin                            67.5      11.3
 
 ### Exercise 5
 
