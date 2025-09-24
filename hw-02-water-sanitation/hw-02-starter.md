@@ -75,7 +75,30 @@ wat_san %>%
 
 ### Exercise 5
 
-Insert your answer here…
+The scatter shows a strong positive association between water_none and
+sanitation_none in 2000 (countries with higher lack of water also tend
+to have higher lack of sanitation).
+
+``` r
+wat_san %>% 
+  filter(Year == 2000, Entity != "World") %>% 
+  ggplot(aes(x = water_none, y = sanitation_none)) +
+  geom_point(alpha = 0.7) +
+  geom_smooth(method = "lm", se = FALSE, color = "red") +
+  labs(x = "No water service (% of population)", 
+       y = "No sanitation (% of population)",
+       title = "2000: No water vs No sanitation")
+```
+
+    ## `geom_smooth()` using formula = 'y ~ x'
+
+    ## Warning: Removed 22 rows containing non-finite outside the scale range
+    ## (`stat_smooth()`).
+
+    ## Warning: Removed 22 rows containing missing values or values outside the scale range
+    ## (`geom_point()`).
+
+![](hw-02-starter_files/figure-gfm/all-2000-plot-1.png)<!-- -->
 
 ### Exercise 6
 
