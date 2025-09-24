@@ -1,7 +1,7 @@
 ---
 title: "HW 02 - Water and Sanitation - Answer Key"
-author: "Gavin McNicol"
-date: "`r Sys.Date()`"
+author: "Tasneem Arabi"
+date: "09/24/25"
 output: github_document
 ---
 
@@ -16,7 +16,7 @@ wat_san <- read_csv("data/water-and-sanitation.csv")
 
 ### Exercise 1
 
-Insert your answer here...then delete this line of text :)
+The dataset has r nrow(wat_san) observations (rows).
 
 ### Exercise 2
 
