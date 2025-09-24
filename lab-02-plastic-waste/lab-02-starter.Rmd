@@ -72,10 +72,17 @@ ggplot(plastic_waste,
 
 ### Exercise 6
 
-Remove this text, and add your answer for Exercise 6 here.
+Continents are somewhat seperate; Europe/North America tend to have **higher waste per capita** but **lower mismanaged share** than Africa/Asia, which show higher mismanaged values at compaarable waste levels. Still, there's overlap showing continent isn't the only driver.
 
 ```{r plastic-waste-mismanaged-continent}
-# insert code here
+ggplot(plastic_waste,
+       aes(x = plastic_waste_per_cap,
+           y = mismanaged_plastic_waste_per_cap,
+           color = continent)) +
+  geom_point(alpha = 0.7) +
+  labs(x = "Plastic waste per capita (kg/day)",
+       y = "Mismanaged plastic waste per cpita (kg/day)",
+       color ="Continent")
 ```
 
 ### Exercise 7
