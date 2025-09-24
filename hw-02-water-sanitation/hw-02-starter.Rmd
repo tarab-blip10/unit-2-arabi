@@ -79,16 +79,52 @@ wat_san %>%
 
 ### Exercise 7
 
-Insert your answer here...
+Summary statistics for the top 5 “no sanitation” countries in 2000 and 2020. The 2020 group shows lower central tendency and spread versus 2000 (progress). Sanitation levels are consistently worse than water levels, though both improve.
 
 ```{r progress-summary}
-  
+# top-5 per year based on sanitation_none
+top5_2000 <- wat_san %>% 
+  filter(Year == 2000, Entity != "World") %>% 
+  slice_max(sanitation_none, n = 5, with_ties = TRUE)
+
+top5_2020 <- wat_san %>% 
+  filter(Year == 2020, Entity != "World") %>% 
+  slice_max(sanitation_none, n = 5, with_ties = TRUE)
+
+bind_rows(top5_2000, top5_2020) %>% 
+  group_by(Year) %>% 
+  summarize(
+    water_none_min    = min(water_none, na.rm = TRUE),
+    water_none_mean   = mean(water_none, na.rm = TRUE),
+    water_none_median = median(water_none, na.rm = TRUE),
+    water_none_stdev  = sd(water_none, na.rm = TRUE),
+    water_none_iqr    = IQR(water_none, na.rm = TRUE),
+    water_none_max    = max(water_none, na.rm = TRUE),
+    
+    sanitation_none_min    = min(sanitation_none, na.rm = TRUE),
+    sanitation_none_mean   = mean(sanitation_none, na.rm = TRUE),
+    sanitation_none_median = median(sanitation_none, na.rm = TRUE),
+    sanitation_none_stdev  = sd(sanitation_none, na.rm = TRUE),
+    sanitation_none_iqr    = IQR(sanitation_none, na.rm = TRUE),
+    sanitation_none_max    = max(sanitation_none, na.rm = TRUE)
+  )  
 ```
 
 ### Exercise 8
 
-Insert your answer here...
+Time series for World and the union of top-5 countries from 2000 and 2020. Most show declining “no sanitation” rates over time; “World” declines steadily, and several countries show faster-than-global improvement.
 
 ```{r country-global-changes}
+# compute set of countries to plot
+countries <- bind_rows(top5_2000, top5_2020) %>% 
+  pull(Entity) %>% 
+  unique()
 
+wat_san %>% 
+  filter(Entity %in% c("World", countries)) %>% 
+  ggplot(aes(x = Year, y = sanitation_none, color = Entity)) +
+  geom_line() +
+  geom_point(size = 0.8) +
+  labs(y = "No sanitation (% of population)",
+       title = "Trends in 'no sanitation' for top-5 (2000 & 2020) vs World")
 ```

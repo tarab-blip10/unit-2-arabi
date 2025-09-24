@@ -14,7 +14,11 @@ wat_san <- read_csv("data/water-and-sanitation.csv")
 
 ### Exercise 1
 
-The dataset has r nrow(wat_san) observations (rows).
+``` r
+nrow(wat_san)
+```
+
+    ## [1] 5118
 
 ### Exercise 2
 
@@ -102,11 +106,77 @@ wat_san %>%
 
 ### Exercise 6
 
-Insert your answer here…
+Top “no sanitation” countries in 2020. Many countries improve and the
+very top list changes—some countries drop out, others enter—indicating
+progress and/or different rates of change.
+
+``` r
+wat_san %>% 
+  filter(Year == 2020, Entity != "World") %>% 
+  arrange(desc(sanitation_none)) %>% 
+  select(Entity, sanitation_none, water_none) %>% 
+  slice_head(n = 10)
+```
+
+    ## # A tibble: 10 × 3
+    ##    Entity                sanitation_none water_none
+    ##    <chr>                           <dbl>      <dbl>
+    ##  1 Niger                            68.1      4.41 
+    ##  2 Chad                             64.1      7.51 
+    ##  3 South Sudan                      60.1      8.08 
+    ##  4 Benin                            51.6      3.30 
+    ##  5 Namibia                          47.2      4.90 
+    ##  6 Togo                             45.2     11.2  
+    ##  7 Solomon Islands                  44.8      5.64 
+    ##  8 Sao Tome and Principe            42.6      1.09 
+    ##  9 Madagascar                       42.4     11.6  
+    ## 10 Burkina Faso                     39.9      0.354
 
 ### Exercise 7
 
-Insert your answer here…
+Summary statistics for the top 5 “no sanitation” countries in 2000 and
+2020. The 2020 group shows lower central tendency and spread versus 2000
+(progress). Sanitation levels are consistently worse than water levels,
+though both improve.
+
+``` r
+# top-5 per year based on sanitation_none
+top5_2000 <- wat_san %>% 
+  filter(Year == 2000, Entity != "World") %>% 
+  slice_max(sanitation_none, n = 5, with_ties = TRUE)
+
+top5_2020 <- wat_san %>% 
+  filter(Year == 2020, Entity != "World") %>% 
+  slice_max(sanitation_none, n = 5, with_ties = TRUE)
+
+bind_rows(top5_2000, top5_2020) %>% 
+  group_by(Year) %>% 
+  summarize(
+    water_none_min    = min(water_none, na.rm = TRUE),
+    water_none_mean   = mean(water_none, na.rm = TRUE),
+    water_none_median = median(water_none, na.rm = TRUE),
+    water_none_stdev  = sd(water_none, na.rm = TRUE),
+    water_none_iqr    = IQR(water_none, na.rm = TRUE),
+    water_none_max    = max(water_none, na.rm = TRUE),
+    
+    sanitation_none_min    = min(sanitation_none, na.rm = TRUE),
+    sanitation_none_mean   = mean(sanitation_none, na.rm = TRUE),
+    sanitation_none_median = median(sanitation_none, na.rm = TRUE),
+    sanitation_none_stdev  = sd(sanitation_none, na.rm = TRUE),
+    sanitation_none_iqr    = IQR(sanitation_none, na.rm = TRUE),
+    sanitation_none_max    = max(sanitation_none, na.rm = TRUE)
+  )  
+```
+
+    ## # A tibble: 2 × 13
+    ##    Year water_none_min water_none_mean water_none_median water_none_stdev
+    ##   <dbl>          <dbl>           <dbl>             <dbl>            <dbl>
+    ## 1  2000           1.38           13.1               3.53            15.0 
+    ## 2  2020           3.30            5.64              4.90             2.06
+    ## # ℹ 8 more variables: water_none_iqr <dbl>, water_none_max <dbl>,
+    ## #   sanitation_none_min <dbl>, sanitation_none_mean <dbl>,
+    ## #   sanitation_none_median <dbl>, sanitation_none_stdev <dbl>,
+    ## #   sanitation_none_iqr <dbl>, sanitation_none_max <dbl>
 
 ### Exercise 8
 
