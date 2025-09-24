@@ -16,7 +16,9 @@ wat_san <- read_csv("data/water-and-sanitation.csv")
 
 ### Exercise 1
 
-The dataset has r nrow(wat_san) observations (rows).
+```{r}
+nrow(wat_san)
+```
 
 ### Exercise 2
 
