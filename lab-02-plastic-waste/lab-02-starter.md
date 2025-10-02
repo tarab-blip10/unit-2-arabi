@@ -113,7 +113,7 @@ ggplot(data = plastic_waste,
 ### Exercise 5
 
 There is a clear **positive correlation**: countries generating more
-plastic waste per capita tend to mismanage more per perosn, with
+plastic waste per capita tend to mismanage more per person, with
 dispersion increasing at higher values.
 
 ``` r
@@ -134,7 +134,7 @@ ggplot(plastic_waste,
 
 Continents are somewhat seperate; Europe/North America tend to have
 **higher waste per capita** but **lower mismanaged share** than
-Africa/Asia, which show higher mismanaged values at compaarable waste
+Africa/Asia, which show higher mismanaged values at comparable waste
 levels. Still, there’s overlap showing continent isn’t the only driver.
 
 ``` r
@@ -144,7 +144,7 @@ ggplot(plastic_waste,
            color = continent)) +
   geom_point(alpha = 0.7) +
   labs(x = "Plastic waste per capita (kg/day)",
-       y = "Mismanaged plastic waste per cpita (kg/day)",
+       y = "Mismanaged plastic waste per capita (kg/day)",
        color ="Continent")
 ```
 
@@ -202,7 +202,7 @@ plastic_waste %>%
   ggplot(aes(x = coastal_pop_prop,
              y = plastic_waste_per_cap,
              color = continent)) +
-  geom_point() +
+  geom_point(alpha = 0.7) +
   geom_smooth(color = "black") + 
   scale_color_viridis_d() +
   labs(x = "Coastal population proportion (coastal / total population",
