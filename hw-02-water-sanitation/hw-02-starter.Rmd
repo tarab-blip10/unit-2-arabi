@@ -28,6 +28,13 @@ Each row represents a country–year record (an Entity in a given Year) with the
 
 Between 2000 and 2020, the distribution of no sanitation service shifts left (toward lower percentages) and becomes more concentrated at lower values—evidence that open defecation generally declined over time, though some high-value outliers remain.
 
+```{r}
+ggplot(data = wat_san, mapping = aes(x = sanitation_none)) +
+  geom_histogram(binwidth = 5) +
+  facet_wrap(~Year)
+```
+
+
 ```{r no-sanitation-years}
 wat_san %>% 
   filter(Entity != "World", Year %in% c(2000, 2020)) %>% 

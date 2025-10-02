@@ -34,6 +34,17 @@ values—evidence that open defecation generally declined over time,
 though some high-value outliers remain.
 
 ``` r
+ggplot(data = wat_san, mapping = aes(x = sanitation_none)) +
+  geom_histogram(binwidth = 5) +
+  facet_wrap(~Year)
+```
+
+    ## Warning: Removed 140 rows containing non-finite outside the scale range
+    ## (`stat_bin()`).
+
+![](hw-02-starter_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
+
+``` r
 wat_san %>% 
   filter(Entity != "World", Year %in% c(2000, 2020)) %>% 
   ggplot(aes(x = sanitation_none)) +
@@ -180,4 +191,24 @@ bind_rows(top5_2000, top5_2020) %>%
 
 ### Exercise 8
 
-Insert your answer here…
+Time series for World and the union of top-5 countries from 2000 and
+2020. Most show declining “no sanitation” rates over time; “World”
+declines steadily, and several countries show faster-than-global
+improvement.
+
+``` r
+# compute set of countries to plot
+countries <- bind_rows(top5_2000, top5_2020) %>% 
+  pull(Entity) %>% 
+  unique()
+
+wat_san %>% 
+  filter(Entity %in% c("World", countries)) %>% 
+  ggplot(aes(x = Year, y = sanitation_none, color = Entity)) +
+  geom_line() +
+  geom_point(size = 0.8) +
+  labs(y = "No sanitation (% of population)",
+       title = "Trends in 'no sanitation' for top-5 (2000 & 2020) vs World")
+```
+
+![](hw-02-starter_files/figure-gfm/country-global-changes-1.png)<!-- -->
